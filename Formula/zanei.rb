@@ -1,13 +1,13 @@
 class Zanei < Formula
   desc "Local activity timeline for people and AI agents"
   homepage "https://github.com/KentoShimizu/zanei"
-  version "0.1.2"
+  version "0.1.3"
   license "MIT OR Apache-2.0"
   depends_on :macos
 
   url "https://github.com/KentoShimizu/zanei/releases/download/v#{version}/zanei-#{version}-macos-universal.tar.gz"
   # Replace 7e188bd5aded4fd2bdb6af4d8480968de4f35739bf2229cc771322e3d889e8e3 with the universal tarball entry from SHA256SUMS before publishing.
-  sha256 "cd97367f866186855a5dca755cc3e2476d4b7451f79850e4bace7bdf8fb52d2e"
+  sha256 "9f5cf183b19360bf36a610757365e11c909ea83718b4943c8377d913347879eb"
 
   def install
     # Homebrew stages inside the archive's single root directory, so the
