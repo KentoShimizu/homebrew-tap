@@ -5,7 +5,7 @@ class Zanei < Formula
   license "MIT OR Apache-2.0"
   depends_on :macos
 
-  url "https://github.com/KentoShimizu/zanei/releases/download/v0.1.0/zanei-0.1.0-macos-universal.tar.gz"
+  url "https://github.com/KentoShimizu/zanei/releases/download/v#{version}/zanei-#{version}-macos-universal.tar.gz"
   # Replace 7e188bd5aded4fd2bdb6af4d8480968de4f35739bf2229cc771322e3d889e8e3 with the universal tarball entry from SHA256SUMS before publishing.
   sha256 "14e3df4779c64bf1efde78c113ffa4d4d97bca11d2eff375871e10e82d7c6090"
 
