@@ -1,12 +1,12 @@
 class Zanei < Formula
   desc "Local activity timeline for people and AI agents"
   homepage "https://github.com/KentoShimizu/zanei"
-  version "0.2.0"
+  version "0.3.0"
   license "MIT OR Apache-2.0"
   depends_on :macos
 
   url "https://github.com/KentoShimizu/zanei/releases/download/v#{version}/zanei-#{version}-macos-universal.tar.gz"
-  sha256 "f04da5f6064b412d008718af51c56bc1292655b5497ebe0c76a0cc8dc3c15c7e"
+  sha256 "dfc8a48a8242d384143b2e5db0507f600d73d62377974c7edff2cb16a677be06"
 
   def install
     # Homebrew stages inside the archive's single root directory, so the
@@ -16,6 +16,7 @@ class Zanei < Formula
     else
       (libexec/"Zanei.app").install "Contents"
     end
+    libexec.install "THIRD_PARTY_NOTICES.md" if File.exist?("THIRD_PARTY_NOTICES.md")
     bin.install_symlink libexec/"Zanei.app/Contents/MacOS/zanei"
   end
 
