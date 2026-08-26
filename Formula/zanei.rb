@@ -2,9 +2,8 @@ class Zanei < Formula
   desc "Local activity timeline for people and AI agents"
   homepage "https://github.com/KentoShimizu/zanei"
   url "https://github.com/KentoShimizu/zanei/releases/download/v0.4.0/zanei-0.4.0-macos-universal.tar.gz"
-  version "0.4.0"
   sha256 "f1f5eafeea3bcc28a569ae5501ee5d721ea62a9b98f7ae5d812ea880775fad95"
-  license "MIT OR Apache-2.0"
+  license any_of: ["MIT", "Apache-2.0"]
 
   depends_on :macos
 
