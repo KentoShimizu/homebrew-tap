@@ -1,12 +1,12 @@
 class Zanei < Formula
   desc "Local activity timeline for people and AI agents"
   homepage "https://github.com/KentoShimizu/zanei"
-  version "0.3.1"
+  url "https://github.com/KentoShimizu/zanei/releases/download/v0.4.0/zanei-0.4.0-macos-universal.tar.gz"
+  version "0.4.0"
+  sha256 "f1f5eafeea3bcc28a569ae5501ee5d721ea62a9b98f7ae5d812ea880775fad95"
   license "MIT OR Apache-2.0"
-  depends_on :macos
 
-  url "https://github.com/KentoShimizu/zanei/releases/download/v#{version}/zanei-#{version}-macos-universal.tar.gz"
-  sha256 "b29d59722625fdd42985507c2e1e749091e593c24fffde7e85f4771499473c39"
+  depends_on :macos
 
   def install
     # Homebrew stages inside the archive's single root directory, so the
@@ -16,8 +16,14 @@ class Zanei < Formula
     else
       (libexec/"Zanei.app").install "Contents"
     end
-    libexec.install "THIRD_PARTY_NOTICES.md" if File.exist?("THIRD_PARTY_NOTICES.md")
+    libexec.install "THIRD_PARTY_NOTICES.md"
     bin.install_symlink libexec/"Zanei.app/Contents/MacOS/zanei"
+  end
+
+  def post_install
+    # tccutil can resolve only bundles registered with LaunchServices.
+    system "/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister",
+           "-f", libexec/"Zanei.app"
   end
 
   test do
