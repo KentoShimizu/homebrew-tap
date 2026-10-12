@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  formula:
+    runs-on: macos-latest
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+      HOMEBREW_NO_INSTALL_FROM_API: "1"
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Use this checkout as the tap
+        run: |
+          tap="$(brew --repository)/Library/Taps/kentoshimizu/homebrew-tap"
+          mkdir -p "$(dirname "$tap")"
+          rm -rf "$tap"
+          ln -s "$GITHUB_WORKSPACE" "$tap"
+
+      - name: Audit
+        run: brew audit --strict --online kentoshimizu/tap/zanei
+
+      - name: Install
+        run: brew install kentoshimizu/tap/zanei
+
+      - name: Test
+        run: brew test kentoshimizu/tap/zanei
